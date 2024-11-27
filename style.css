@@ -1,103 +1,128 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f8ff;
-  color: #333;
-}
+const translations = {
+  en: {
+    headerTitle: "MuzzyCoin",
+    headerSubtitle: "The funniest memecoin in the universe!",
+    heroText: "Join the MuzzyCoin movement and be part of the future!",
+    navFeatures: "Features",
+    navRoadmap: "Roadmap",
+    navTokenomics: "Tokenomics",
+    navBuy: "Buy",
+    featuresTitle: "Features of MuzzyCoin",
+    feature1: "Fun and Unique",
+    feature2: "Strong Community",
+    feature3: "Infinite Potential",
+    roadmapTitle: "Roadmap",
+    roadmap1: "Phase 1: Launch",
+    roadmap2: "Phase 2: Community Growth",
+    roadmap3: "Phase 3: To Infinity",
+    tokenomicsTitle: "Tokenomics",
+    tokenomics1: "Total Supply: 1,000,000,000 MZY",
+    tokenomics2: "Distribution: 50% Community, 25% Liquidity, 25% Development",
+    tokenomics3: "No Taxes",
+    buyTitle: "Buy MuzzyCoin",
+    buyButton: "Buy Now!",
+  },
+  es: {
+    headerTitle: "MuzzyCoin",
+    headerSubtitle: "¡La memecoin más divertida del universo!",
+    heroText: "¡Únete al movimiento MuzzyCoin y sé parte del futuro!",
+    navFeatures: "Características",
+    navRoadmap: "Hoja de Ruta",
+    navTokenomics: "Tokenomics",
+    navBuy: "Comprar",
+    featuresTitle: "Características de MuzzyCoin",
+    feature1: "Divertida y única",
+    feature2: "Comunidad fuerte",
+    feature3: "Potencial infinito",
+    roadmapTitle: "Hoja de Ruta",
+    roadmap1: "Fase 1: Lanzamiento",
+    roadmap2: "Fase 2: Crecimiento de la comunidad",
+    roadmap3: "Fase 3: Hacia el infinito",
+    tokenomicsTitle: "Tokenomics",
+    tokenomics1: "Suministro total: 1,000,000,000 MZY",
+    tokenomics2: "Distribución: 50% Comunidad, 25% Liquidez, 25% Desarrollo",
+    tokenomics3: "Sin impuestos",
+    buyTitle: "Compra MuzzyCoin",
+    buyButton: "¡Compra ahora!",
+  },
+  zh: {
+    headerTitle: "MuzzyCoin",
+    headerSubtitle: "宇宙中最有趣的模因币！",
+    heroText: "加入MuzzyCoin运动，成为未来的一部分！",
+    navFeatures: "特点",
+    navRoadmap: "路线图",
+    navTokenomics: "代币经济",
+    navBuy: "购买",
+    featuresTitle: "MuzzyCoin 的特点",
+    feature1: "有趣而独特",
+    feature2: "强大的社区",
+    feature3: "无限潜力",
+    roadmapTitle: "路线图",
+    roadmap1: "阶段1：启动",
+    roadmap2: "阶段2：社区增长",
+    roadmap3: "阶段3：无限未来",
+    tokenomicsTitle: "代币经济",
+    tokenomics1: "总供应量：1,000,000,000 MZY",
+    tokenomics2: "分配：50% 社区，25% 流动性，25% 开发",
+    tokenomics3: "无税收",
+    buyTitle: "购买 MuzzyCoin",
+    buyButton: "立即购买！",
+  },
+  fr: {
+    headerTitle: "MuzzyCoin",
+    headerSubtitle: "La memecoin la plus drôle de l'univers !",
+    heroText: "Rejoignez le mouvement MuzzyCoin et faites partie de l'avenir !",
+    navFeatures: "Caractéristiques",
+    navRoadmap: "Feuille de route",
+    navTokenomics: "Tokenomics",
+    navBuy: "Acheter",
+    featuresTitle: "Caractéristiques de MuzzyCoin",
+    feature1: "Amusant et unique",
+    feature2: "Communauté forte",
+    feature3: "Potentiel infini",
+    roadmapTitle: "Feuille de route",
+    roadmap1: "Phase 1 : Lancement",
+    roadmap2: "Phase 2 : Croissance de la communauté",
+    roadmap3: "Phase 3 : Vers l'infini",
+    tokenomicsTitle: "Tokenomics",
+    tokenomics1: "Offre totale : 1 000 000 000 MZY",
+    tokenomics2: "Répartition : 50 % Communauté, 25 % Liquidité, 25 % Développement",
+    tokenomics3: "Pas de taxes",
+    buyTitle: "Acheter MuzzyCoin",
+    buyButton: "Achetez maintenant !",
+  },
+  ru: {
+    headerTitle: "MuzzyCoin",
+    headerSubtitle: "Самая забавная мемкойн во Вселенной!",
+    heroText: "Присоединяйтесь к движению MuzzyCoin и станьте частью будущего!",
+    navFeatures: "Особенности",
+    navRoadmap: "Дорожная карта",
+    navTokenomics: "Токеномика",
+    navBuy: "Купить",
+    featuresTitle: "Особенности MuzzyCoin",
+    feature1: "Весело и уникально",
+    feature2: "Сильное сообщество",
+    feature3: "Бесконечный потенциал",
+    roadmapTitle: "Дорожная карта",
+    roadmap1: "Этап 1: Запуск",
+    roadmap2: "Этап 2: Рост сообщества",
+    roadmap3: "Этап 3: В бесконечность",
+    tokenomicsTitle: "Токеномика",
+    tokenomics1: "Общий объем: 1,000,000,000 MZY",
+    tokenomics2: "Распределение: 50% Сообщество, 25% Ликвидность, 25% Разработка",
+    tokenomics3: "Без налогов",
+    buyTitle: "Купить MuzzyCoin",
+    buyButton: "Купить сейчас!",
+  }
+};
 
-header {
-  background-color: #4caf50;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
+document.getElementById("language-select").addEventListener("change", (e) => {
+  const lang = e.target.value; // Idioma seleccionado
+  const content = translations[lang]; // Traducciones del idioma
 
-header h1 {
-  margin: 0;
-  font-size: 2.5em;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #333;
-  color: white;
-}
-
-nav .links a {
-  color: white;
-  text-decoration: none;
-  margin-right: 20px;
-  font-size: 1.2em;
-}
-
-nav .links a:hover {
-  text-decoration: underline;
-}
-
-nav .language-select {
-  font-size: 1em;
-  background-color: white;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-section {
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-#hero {
-  background-color: #333;
-  color: white;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.section-title {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.features, .roadmap, .tokenomics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.feature, .roadmap-step, .tokenomics-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  width: 300px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.buy-button {
-  display: block;
-  margin: 20px auto;
-  padding: 15px 30px;
-  font-size: 1.2em;
-  color: white;
-  background-color: #ff4500;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-}
-
-.buy-button:hover {
-  background-color: #e63e00;
-}
+  // Actualiza todos los elementos con las traducciones
+  Object.keys(content).forEach((id) => {
+    const element = document.getElementById(id);
+    if (element) element.textContent = content[id];
+  });
+});
